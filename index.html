@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sikelock | Mobile & Cool</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2d0f1e, #b30000, #ff4e50); /* Red gradient background */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* MOBILE-FIRST STYLING */
+        .sikelock-button, .discord-button {
+            width: 90%;
+            font-size: 1.2em;
+            padding: 14px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .sikelock-button {
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+        }
+
+        .sikelock-button:hover {
+            background: linear-gradient(45deg, #ff4d4d, #ff0000);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .discord-button {
+            background: linear-gradient(45deg, #7289DA, #5865F2);
+        }
+
+        .discord-button:hover {
+            background: linear-gradient(45deg, #8890F3, #7289DA);
+            box-shadow: 0 8px 20px rgba(114, 137, 218, 0.4);
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 90%; /* Full width for mobile */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .copy-button {
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin-top: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 7px;
+            transition: background 0.3s ease;
+            width: 100%; /* Full width for mobile */
+        }
+
+        .copy-button:hover {
+            background-color: #00aaff;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: white;
+        }
+
+        pre {
+            background-color: #111;
+            padding: 15px;
+            border-radius: 7px;
+            font-size: 14px;
+            overflow-x: auto;
+            max-height: 300px; /* Smaller for mobile */
+            color: #00ffcc;
+        }
+
+        .description, .reasons-section {
+            width: 90%; /* Make it wider for mobile */
+            font-size: 1.1em; /* Slightly smaller for readability */
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .reasons-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .reasons-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .reasons-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .reasons-section li {
+            margin-bottom: 15px;
+        }
+
+        .reasons-section li strong {
+            font-size: 1.2em;
+        }
+
+        .reasons-section p {
+            font-size: 1em;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Modern Mobile Credits Section */
+        .credits {
+            width: 90%; /* Adjust for mobile */
+            font-size: 1.2em;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff4e50, #ff0000); /* Bright, sleek gradient */
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0px 8px 25px rgba(255, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 2s ease-out;
+        }
+
+        .credits p {
+            margin: 5px 0;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        .credits p strong {
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="description">
+        <p>
+            <strong>SikeLock</strong> is the ultimate precision tool for Roblox, delivering flawless, lightning-fast accuracy in every game. With its state-of-the-art targeting system, SikeLock guarantees unmatched performance, locking onto opponents with surgical precision and zero latency.
+        </p>
+    </div>
+
+    <div class="button-container">
+        <button class="sikelock-button" onclick="openModal()">Sike.cc</button>
+        <button class="discord-button" onclick="window.open('https://discord.gg/gwDxJBXB', '_blank')">Join Discord</button>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Sikelock Code</h2>
+            <pre><code id="script-code">
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/cat"))()
+
+local Window = Library:CreateWindow("sikelock (mob) | v.1.2", Vector2.new(440, 450), Enum.KeyCode.RightControl)
+local AimingTab = Window:CreateTab("Lock Tab")
+local VisualTab = Window:CreateTab("Auto Air, more")
+...
+            </code></pre>
+            <button class="copy-button" onclick="copyCode()">Copy Code</button>
+        </div>
+    </div>
+
+    <div class="reasons-section">
+        <h2>Why Sikelock is the Superior Choice for Camlocks</h2>
+        <ul>
+            <li>
+                <strong>1. Unmatched Accuracy and Precision</strong>
+                <p>
+                    Sikelock employs cutting-edge targeting algorithms that surpass other aimbots in terms of accuracy. Its advanced prediction systems allow for natural aim corrections, adjusting to enemy movement in real time.
+                </p>
+            </li>
+            <li>
+                <strong>2. Comprehensive Customization</strong>
+                <p>
+                    With options like aim speed, snap distance, and hitbox selection, Sikelock offers full control over performance. Whether you prefer subtle assistance or aggressive lock-on, it's fully customizable.
+                </p>
+            </li>
+            <li>
+                <strong>3. Stealth and Security</strong>
+                <p>
+                    Engineered with anti-detection features, Sikelock helps keep your account safe. It employs randomization techniques to make gameplay feel natural and avoid detection from anti-cheat systems.
+                </p>
+            </li>
+            <li>
+                <strong>4. Low Resource Usage</strong>
+                <p>
+                    Designed to operate efficiently, Sikelock consumes minimal system resources, allowing you to enjoy smooth gaming without performance dips.
+                </p>
+            </li>
+            <li>
+                <strong>5. Multi-Game Support</strong>
+                <p>
+                    Sikelock is compatible with various popular games, adapting to different mechanics and offering a versatile tool for all your gaming needs. It’s designed to be your go-to camlock across multiple platforms.
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Modern Mobile Credits Section -->
+    <div class="credits">
+        <p><strong>Owner:</strong> SikeBladi</p>
+        <p><strong>Main Developer:</strong> FeelAlt</p>
+        <p><strong>Special Thanks:</strong> To the entire Sikelock community for your continuous feedback and support!</p>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function copyCode() {
+            var code = document.getElementById("script-code").textContent;
+            navigator.clipboard.writeText(code).then(function() {
+                alert('Code copied to clipboard');
+            }, function(err) {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
